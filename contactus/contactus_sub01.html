@@ -63,7 +63,7 @@
 
 								<div class="contents_con">
 									
-									<form action="" method="" autocomplete="off">
+									<form id="contactFormEn" action="/controller/form_handler_contactus.php" method="post" autocomplete="off"><input type="hidden" name="lang_type" value="en">
 										<div class="write_con">
 											<div class="contents_con">
 												<div class="input01_con">
@@ -89,11 +89,11 @@
 																					<div class="name_con">
 																						<ul>
 																							<li>
-																								<input type="text" name="" placeholder="First" class="input" />
+																								<input type="text" name="f_name_first" placeholder="First" class="input" data-required="y" data-label="First Name">
 																								<div class="bar"></div>
 																							</li>
 																							<li>
-																								<input type="text" name="" placeholder="Last" class="input" />
+																								<input type="text" name="f_name_last" placeholder="Last" class="input" data-required="y" data-label="Last Name">
 																								<div class="bar"></div>
 																							</li>
 																						</ul>
@@ -123,7 +123,7 @@
 																				</div>
 
 																				<div class="info_con">
-																					<input type="text" name="" placeholder="Email Address" class="input" />
+																					<input type="text" name="f_email" placeholder="Email Address" class="input" data-required="y" data-validate-type="email" data-label="Email">
 																				</div>
 																			</td>
 																		</tr>
@@ -148,7 +148,7 @@
 																				</div>
 
 																				<div class="info_con">
-																					<input type="text" name="" placeholder="COMPANY NAME" class="input" />
+																					<input type="text" name="f_company_name" placeholder="COMPANY NAME" class="input" data-required="y" data-label="Company Name">
 																				</div>
 																			</td>
 																		</tr>
@@ -174,7 +174,7 @@
 																				</div>
 
 																				<div class="info_con">
-																					<select name="" class="select">
+																					<select name="f_country" class="select" data-required="y" data-label="Country">
 																						<option value="">COUNTRY</option>
 																					</select>
 																				</div>
@@ -201,7 +201,7 @@
 																				</div>
 
 																				<div class="info_con">
-																					<input type="text" name="" placeholder="CONTACT NUMBER" class="input" />
+																					<input type="text" name="f_contact_number" placeholder="CONTACT NUMBER" class="input" data-required="y" data-label="Contact Number" data-validate-type="tel">
 																				</div>
 																			</td>
 																		</tr>
@@ -221,7 +221,7 @@
 
 													<div class="info_con">
 														<div class="textarea_con">
-															<textarea name="" placeholder="Your message here" class="textarea"></textarea>
+															<textarea name="f_message" placeholder="Your message here" class="textarea" data-required="y" data-label="Message"></textarea>
 														</div>
 													</div>
 												</div>
@@ -232,7 +232,7 @@
 											</div>
 
 											<div class="btn_con">
-												<a href="#" class="a_btn a_btn01">
+												<a href="#" class="a_btn a_btn01" onclick="submitForm('contactFormEn'); return false;">
 													Submit
 												</a>
 
@@ -253,9 +253,9 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" language="javascript">
-		$(document).ready(function(){
-			gsap.registerPlugin(ScrollTrigger, CustomEase);
+        <script type="text/javascript" language="javascript">
+                $(document).ready(function(){
+                        gsap.registerPlugin(ScrollTrigger, CustomEase);
 		
 			setTimeout(function(){
 				// .contactus_sub01_con > .contents_con > .info01_con 애니메이션을 기록할 변수
@@ -352,10 +352,11 @@
 				});
 			}, 500);
 
-			ScrollTrigger.refresh();
-		});
-	</script>
+                        ScrollTrigger.refresh();
+                });
+        </script>
+        <script type="text/javascript" src="/js/form-controller.js"></script>
 
 <?php
-	include $_SERVER['DOCUMENT_ROOT'].'/include/footer.html'; 
-?>	
+        include $_SERVER['DOCUMENT_ROOT'].'/include/footer.html';
+?>
