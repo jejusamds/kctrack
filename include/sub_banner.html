@@ -1,0 +1,131 @@
+			<div class="banner_con <?php if($Menu=='01'){?>aboutus<?php }else if($Menu=='02'){?>product<?php }else if($Menu=='03'){?>ams<?php }else if($Menu=='04'){?>onp<?php }else if($Menu=='05'){?>contactus<?php }else{?><?php }?>">
+				<div class="contents_con">
+					<div class="text_con">
+						<div class="text01_con">
+							<span>
+								<?=$banner_text01?>
+							</span>
+						</div>
+
+						<div class="text02_con">
+							<span>
+								<?=$banner_text02?>
+							</span>
+						</div>
+					</div>
+
+					<div class="nav <?php if($Menu=='01'){?>aboutus<?php }else if($Menu=='02'){?>product<?php }else if($Menu=='03'){?>ams<?php }else if($Menu=='04'){?>onp<?php }else if($Menu=='05'){?>contactus<?php }else{?><?php }?>">
+						<div class="contents_con">
+							<div class="list_con">
+								<ul>
+									<?php if( $Menu == "01" ){?>
+									<li>
+										<a href="javascript:move_scroll('go_info01_con');" class="on"> 
+											MESSAGE FROM CEO
+										</a>
+									</li>
+									<li>
+										<a href="javascript:move_scroll('go_info02_con');">
+											INTRODUCTION
+										</a>
+									</li>
+									<li>
+										<a href="javascript:move_scroll('go_info03_con');">
+											CERTIFICATION
+										</a>
+									</li>
+									<li>
+										<a href="javascript:move_scroll('go_info04_con');">
+											DIRECTIONS
+										</a>
+									</li>
+									<?php }else if( $Menu == "02" ){?>
+									<li>
+										<a href="javascript:move_scroll('go_product_sub_con');" class="on"> 
+											TRACK CHAIN ASSY
+										</a>
+									</li>
+									<?php }else if( $Menu == "03" ){?>
+									<li>
+										<a href="javascript:move_scroll('go_info01_con');" class="on"> 
+											ONE LINK ASSY
+										</a>
+									</li>
+									<li>
+										<a href="javascript:move_scroll('go_info03_con');"> 
+											REPAIR KIT
+										</a>
+									</li>
+									<?php }else if( $Menu == "04" ){?>
+									<li>
+										<a href="javascript:move_scroll('go_info01_con');" class="on">
+											OTHER UNDERCARRIAGE COMPONENTS
+										</a>
+									</li>
+									<li>
+										<a href="javascript:move_scroll('go_info02_con');">
+											PHOTOS OF OTHER COMPONENTS
+										</a>
+									</li>
+									<?php }else if( $Menu == "05" ){?>
+									<li>
+										<a href="javascript:move_scroll('go_info02_con');" class="on">
+											SALES INQUIRLES
+										</a>
+									</li>
+									<?php } ?>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script type="text/javascript" language="javascript">
+				$(document).ready(function(){
+					gsap.registerPlugin(ScrollTrigger, CustomEase);
+				
+					setTimeout(function(){
+						// #sub_con > .banner_con 애니메이션을 기록할 변수
+						let tl_sub_banner = null;
+						
+						// #sub_con > .banner_con 애니메이션
+						gsap.to("#sub_con > .banner_con", {
+							scrollTrigger: {
+								trigger: "#sub_con > .banner_con",
+								start: "top center",
+								end: "bottom center",
+								onEnter: () => {
+									// 실행 중인 애니메이션이 없으면 애니메이션 생성 및 실행
+									if (!tl_sub_banner) {
+										// 타임라인 생성
+										tl_sub_banner = gsap.timeline();
+										
+										//
+										tl_sub_banner.to("#sub_con > .banner_con > .contents_con > .text_con > .text01_con span, #sub_con > .banner_con > .contents_con > .text_con > .text02_con span, #sub_con > .banner_con > .contents_con > .nav", {
+											opacity: 1,
+											translateY: 0,
+											ease: "ease",
+											duration: 0.8,
+											stagger: {
+												each: 0.2,
+												from: "start",
+											},
+										});
+									}
+								},
+								onLeaveBack: () => {
+									// 실행 중인 애니메이션 중지 및 초기화
+									if (tl_sub_banner) {
+										tl_sub_banner.kill();
+										tl_sub_banner = null;
+									}
+								},
+								//markers: true,
+							},
+						});
+					}, 500);
+
+					ScrollTrigger.refresh();
+				});
+			</script>

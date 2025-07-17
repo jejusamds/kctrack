@@ -1,0 +1,378 @@
+<?php
+	error_reporting( E_ALL );
+	ini_set( "display_errors", 0 );
+
+	// 페이지 시점 이동
+	$type = $_GET["type"];
+
+	// 현재 페이지 url
+	$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http');
+	$http_host = $_SERVER['HTTP_HOST'];
+	$request_uri = $_SERVER['REQUEST_URI'];
+	$url = $protocol . '://' . $http_host . $request_uri;
+
+	if( $Menu == "01" ){
+		$banner_text01 = "회사소개";
+		$banner_text02 = "신뢰받는 크롤러 트랙 체인 공급업체";
+	}else if( $Menu == "02" ){
+		$banner_text01 = "제품소개";
+		$banner_text02 = "신뢰받는 크롤러 트랙 체인 공급업체";
+	}else if( $Menu == "03" ){
+		$banner_text01 = "애프터마켓 서비스";
+		$banner_text02 = "신뢰받는 크롤러 트랙 체인 공급업체";
+	}else if( $Menu == "04" ){
+		$banner_text01 = "기타 하부주행 부품";
+		$banner_text02 = "신뢰받는 크롤러 트랙 체인 공급업체";
+	}else if( $Menu == "05" ){
+		$banner_text01 = "문의하기";
+		$banner_text02 = "신뢰받는 크롤러 트랙 체인 공급업체";
+	}else{
+		$banner_text01 = "배너 텍스트01";
+		$banner_text02 = "배너 텍스트02";
+	}
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<title>코리아크롤러트랙</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=3, user-scalable=yes">
+<meta name="format-detection" content="telephone=no" />
+
+<!--
+<link rel="shortcut icon" href="/kr/img/favicon.ico" />
+-->
+
+<!--url 전송시-->
+<meta property="og:url" content="<?=$url?>" />
+<meta property="og:title" content="코리아크롤러트랙" />
+<meta property="og:site_name" content="코리아크롤러트랙" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="/kr/img/url_img.png" />
+<meta property="og:description" content="코리아크롤러트랙" />
+<meta name="description" content="코리아크롤러트랙" />
+<meta name="keywords" content="코리아크롤러트랙" />
+<link rel="canonical" href="<?=$url?>" />
+<!--url 전송시-->
+
+<link rel="stylesheet" type="text/css" href="/kr/css/jquery-ui.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" type="text/css" href="/kr/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/kr/css/common_all.css" />
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="/kr/js/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/CustomEase.min.js"></script>
+
+</head>
+<body>
+
+<div id="wrap">
+
+	<div id="header">
+		<div class="contents_con">
+			<table cellpadding="0" cellspacing="0">
+				<tbody>
+					<tr>
+						<td align="left" class="logo_td">
+							<a href="/kr/">
+								<img src="/kr/img/main/main_logo.svg" alt="메인 로고" class="fx" />
+							</a>
+						</td>
+						<td align="center" class="nav_td">
+							<div class="list_con">
+								<ul>
+									<li>
+										<a href="/kr/">
+											홈
+										</a>
+									</li>
+									<li>
+										<a href="/kr/aboutus/aboutus_sub01.html">
+											회사소개
+										</a>
+									</li>
+									<li>
+										<a href="/kr/product/product_sub01.html">
+											제품소개
+										</a>
+									</li>
+									<li>
+										<a href="/kr/ams/ams_sub01.html">
+											애프터마켓 서비스
+										</a>
+									</li>
+									<li>
+										<a href="/kr/onp/onp_sub01.html">
+											기타 하부주행 부품
+										</a>
+									</li>
+									<li>
+										<a href="/kr/contactus/contactus_sub01.html">
+											문의하기
+										</a>
+									</li>
+								</ul>
+							</div>
+						</td>
+						<td align="left" class="blank_td">
+							&nbsp;
+						</td>
+						<td align="left" class="btn_td">
+							<div class="contents_con">
+								<div class="call_con w_con">
+									<span>
+										연락처 +82 55 759 6742
+									</span>
+								</div>
+
+								<div class="language_con">
+									<a href="/kr/" class="on">
+										KR
+									</a>
+
+									<div class="bar"></div>
+
+									<a href="/index_tmp.html">
+										EN
+									</a>
+								</div>
+
+								<div class="menu_con">
+									<a href="javascript:main_sub_nav();">
+										<img src="/kr/img/main/header_menu_btn.svg" alt="헤더 메뉴 버튼" class="fx" />
+									</a>
+								</div>
+							</div>
+
+							<div class="sub_nav">
+								<div class="contents_con">
+									<div class="nav">
+										<ul>
+											<li>
+												<div class="btn has">
+													<a href="javascript:void(0);">
+														<table cellpadding="0" cellspacing="0">
+															<tbody>
+																<tr>
+																	<td align="left" class="text_td">
+																		<span>
+																			회사소개
+																		</span>
+																	</td>
+																	<td align="left" class="arrow_td">
+																		<img src="/kr/img/main/main_sub_nav_list_arrow.svg" alt="화살표" class="fx" />
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</a>
+												</div>
+
+												<div class="sub_nav">
+													<ul>
+														<li>
+															<div class="btn">
+																<a href="/kr/aboutus/aboutus_sub01.html?type=01">
+																	CEO 인사말
+																</a>
+															</div>
+														</li>
+														<li>
+															<div class="btn">
+																<a href="/kr/aboutus/aboutus_sub01.html?type=02">
+																	소개
+																</a>
+															</div>
+														</li>
+														<li>
+															<div class="btn">
+																<a href="/kr/aboutus/aboutus_sub01.html?type=03">
+																	인증
+																</a>
+															</div>
+														</li>
+														<li>
+															<div class="btn">
+																<a href="/kr/aboutus/aboutus_sub01.html?type=04">
+																	오시는 길
+																</a>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</li>
+											<li>
+												<div class="btn has">
+													<a href="javascript:void(0);">
+														<table cellpadding="0" cellspacing="0">
+															<tbody>
+																<tr>
+																	<td align="left" class="text_td">
+																		<span>
+																			제품소개
+																		</span>
+																	</td>
+																	<td align="left" class="arrow_td">
+																		<img src="/kr/img/main/main_sub_nav_list_arrow.svg" alt="화살표" class="fx" />
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</a>
+												</div>
+
+												<div class="sub_nav">
+													<ul>
+														<li>
+															<div class="btn">
+																<a href="/kr/product/product_sub01.html?type=00">
+																	트랙 체인 조립품
+																</a>
+															</div>
+
+															<div class="sub_nav">
+																<ul>
+																	<li>
+																		<a href="/kr/product/product_sub01.html?type=00">
+																			불도저
+																		</a>
+																	</li>
+																	<li>
+																		<a href="/kr/product/product_sub01_2.html?type=00">
+																			굴삭기
+																		</a>
+																	</li>
+																</ul>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</li>
+											<li>
+												<div class="btn has">
+													<a href="javascript:void(0);">
+														<table cellpadding="0" cellspacing="0">
+															<tbody>
+																<tr>
+																	<td align="left" class="text_td">
+																		<span>
+																			애프터마켓 서비스
+																		</span>
+																	</td>
+																	<td align="left" class="arrow_td">
+																		<img src="/kr/img/main/main_sub_nav_list_arrow.svg" alt="화살표" class="fx" />
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</a>
+												</div>
+
+												<div class="sub_nav">
+													<ul>
+														<li>
+															<div class="btn">
+																<a href="/kr/ams/ams_sub01.html?type=02">
+																	원 링크 조립품
+																</a>
+															</div>
+														</li>
+														<li>
+															<div class="btn">
+																<a href="/kr/ams/ams_sub01.html?type=03">
+																	수리 키트
+																</a>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</li>
+											<li>
+												<div class="btn has">
+													<a href="javascript:void(0);">
+														<table cellpadding="0" cellspacing="0">
+															<tbody>
+																<tr>
+																	<td align="left" class="text_td">
+																		<span>
+																			기타 하부주행 부품
+																		</span>
+																	</td>
+																	<td align="left" class="arrow_td">
+																		<img src="/kr/img/main/main_sub_nav_list_arrow.svg" alt="화살표" class="fx" />
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</a>
+												</div>
+
+												<div class="sub_nav">
+													<ul>
+														<li>
+															<div class="btn">
+																<a href="/kr/onp/onp_sub01.html?type=01">
+																	기타 하부주행 부품
+																</a>
+															</div>
+														</li>
+														<li>
+															<div class="btn">
+																<a href="/kr/onp/onp_sub01.html?type=02">
+																	기타 부품 사진
+																</a>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</li>
+											<li>
+												<div class="btn has">
+													<a href="javascript:void(0);">
+														<table cellpadding="0" cellspacing="0">
+															<tbody>
+																<tr>
+																	<td align="left" class="text_td">
+																		<span>
+																			문의하기
+																		</span>
+																	</td>
+																	<td align="left" class="arrow_td">
+																		<img src="/kr/img/main/main_sub_nav_list_arrow.svg" alt="화살표" class="fx" />
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</a>
+												</div>
+
+												<div class="sub_nav">
+													<ul>
+														<li>
+															<div class="btn">
+																<a href="/kr/contactus/contactus_sub01.html?type=02">
+																	영업 문의
+																</a>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>

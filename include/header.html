@@ -1,0 +1,382 @@
+<?php
+	error_reporting( E_ALL );
+	ini_set( "display_errors", 0 );
+
+	// 페이지 시점 이동
+	$type = $_GET["type"];
+
+	// 현재 페이지 url
+	$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http');
+	$http_host = $_SERVER['HTTP_HOST'];
+	$request_uri = $_SERVER['REQUEST_URI'];
+	$url = $protocol . '://' . $http_host . $request_uri;
+
+	if( $Menu == "01" ){
+		$banner_text01 = "ABOUT US";
+		$banner_text02 = "Your Trusted Supplier of <br class='m_br' />Crawler Track Chains";
+	}else if( $Menu == "02" ){
+		$banner_text01 = "PRODUCT";
+		$banner_text02 = "Your Trusted Supplier of <br class='m_br' />Crawler Track Chains";
+	}else if( $Menu == "03" ){
+		$banner_text01 = "AFTER MARKET SERVICE";
+		$banner_text02 = "Your Trusted Supplier of <br class='m_br' />Crawler Track Chains";
+	}else if( $Menu == "04" ){
+		$banner_text01 = "OTHER <br />UNDERCARRIAGE PARTS";
+		$banner_text02 = "Your Trusted Supplier of <br class='m_br' />Crawler Track Chains";
+	}else if( $Menu == "05" ){
+		$banner_text01 = "CONTACT US";
+		$banner_text02 = "Your Trusted Supplier of <br class='m_br' />Crawler Track Chains";
+	}else{
+		$banner_text01 = "배너 텍스트01";
+		$banner_text02 = "배너 텍스트02";
+	}
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<title>KOREA CRAWLER TRACK</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=3, user-scalable=yes">
+<meta name="format-detection" content="telephone=no" />
+
+<!--
+<link rel="shortcut icon" href="/img/favicon.ico" />
+-->
+
+<!--url 전송시-->
+<meta property="og:url" content="<?=$url?>" />
+<meta property="og:title" content="KOREA CRAWLER TRACK" />
+<meta property="og:site_name" content="KOREA CRAWLER TRACK" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="/img/url_img.png" />
+<meta property="og:description" content="KOREA CRAWLER TRACK" />
+<meta name="description" content="KOREA CRAWLER TRACK" />
+<meta name="keywords" content="KOREA CRAWLER TRACK" />
+<link rel="canonical" href="<?=$url?>" />
+<!--url 전송시-->
+
+<link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/common_all.css" />
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/CustomEase.min.js"></script>
+
+</head>
+<body>
+
+<div id="wrap">
+
+	<div id="header">
+		<div class="contents_con">
+			<table cellpadding="0" cellspacing="0">
+				<tbody>
+					<tr>
+						<td align="left" class="logo_td">
+							<a href="/index_tmp.html">
+								<img src="/img/main/main_logo.svg" alt="메인 로고" class="fx" />
+							</a>
+						</td>
+						<td align="center" class="nav_td">
+							<div class="list_con">
+								<ul>
+									<li>
+										<a href="/index_tmp.html">
+											HOME
+										</a>
+									</li>
+									<li>
+										<a href="/aboutus/aboutus_sub01.html">
+											ABOUT US
+										</a>
+									</li>
+									<li>
+										<a href="/product/product_sub01.html">
+											PRODUCT
+										</a>
+									</li>
+									<li>
+										<a href="/ams/ams_sub01.html">
+											AFTER MARKET SERVICE
+										</a>
+									</li>
+									<li>
+										<a href="/onp/onp_sub01.html">
+											OTHER UNDERCARRIAGE PARTS
+										</a>
+									</li>
+									<li>
+										<a href="/contactus/contactus_sub01.html">
+											CONTACT US
+										</a>
+									</li>
+								</ul>
+							</div>
+						</td>
+						<td align="left" class="blank_td">
+							&nbsp;
+						</td>
+						<td align="left" class="btn_td">
+							<div class="contents_con">
+								<div class="call_con w_con">
+									<span>
+										CALL US +82 55 759 6742
+									</span>
+								</div>
+
+								<div class="language_con">
+									<a href="/kr/">
+										KR
+									</a>
+
+									<div class="bar"></div>
+
+									<a href="/index_tmp.html" class="on">
+										EN
+									</a>
+								</div>
+
+								<div class="menu_con">
+									<a href="javascript:main_sub_nav();">
+										<img src="/img/main/header_menu_btn.svg" alt="헤더 메뉴 버튼" class="fx" />
+									</a>
+								</div>
+							</div>
+
+							<div class="sub_nav">
+								<div class="contents_con">
+									<div class="nav">
+										<ul>
+											<li>
+												<div class="btn has">
+													<a href="javascript:void(0);">
+														<table cellpadding="0" cellspacing="0">
+															<tbody>
+																<tr>
+																	<td align="left" class="text_td">
+																		<span>
+																			ABOUT US
+																		</span>
+																	</td>
+																	<td align="left" class="arrow_td">
+																		<img src="/img/main/main_sub_nav_list_arrow.svg" alt="화살표" class="fx" />
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</a>
+												</div>
+
+												<div class="sub_nav">
+													<ul>
+														<li>
+															<div class="btn">
+																<a href="/aboutus/aboutus_sub01.html?type=01">
+																	MESSAGE FROM CEO
+																</a>
+															</div>
+														</li>
+														<li>
+															<div class="btn">
+																<a href="/aboutus/aboutus_sub01.html?type=02">
+																	INTRODUCTION
+																</a>
+															</div>
+														</li>
+														<li>
+															<div class="btn">
+																<a href="/aboutus/aboutus_sub01.html?type=03">
+																	CERTIFICATION
+																</a>
+															</div>
+														</li>
+														<li>
+															<div class="btn">
+																<a href="/aboutus/aboutus_sub01.html?type=04">
+																	DIRECTIONS
+																</a>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</li>
+											<li>
+												<div class="btn has">
+													<a href="javascript:void(0);">
+														<table cellpadding="0" cellspacing="0">
+															<tbody>
+																<tr>
+																	<td align="left" class="text_td">
+																		<span>
+																			PRODUCT
+																		</span>
+																	</td>
+																	<td align="left" class="arrow_td">
+																		<img src="/img/main/main_sub_nav_list_arrow.svg" alt="화살표" class="fx" />
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</a>
+												</div>
+
+												<div class="sub_nav">
+													<ul>
+														<li>
+															<div class="btn">
+																<a href="/product/product_sub01.html?type=00">
+																	TRACK CHAIN ASSY
+																</a>
+															</div>
+
+															<div class="sub_nav">
+																<ul>
+																	<li>
+																		<a href="/product/product_sub01.html?type=00">
+																			BULLDOZER
+																		</a>
+																	</li>
+																	<li>
+																		<a href="/product/product_sub01_2.html?type=00">
+																			EXCAVATOR
+																		</a>
+																	</li>
+																</ul>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</li>
+											<li>
+												<div class="btn has">
+													<a href="javascript:void(0);">
+														<table cellpadding="0" cellspacing="0">
+															<tbody>
+																<tr>
+																	<td align="left" class="text_td">
+																		<span>
+																			AFTER MARKET SERVICE
+																		</span>
+																	</td>
+																	<td align="left" class="arrow_td">
+																		<img src="/img/main/main_sub_nav_list_arrow.svg" alt="화살표" class="fx" />
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</a>
+												</div>
+
+												<div class="sub_nav">
+													<ul>
+														<li>
+															<div class="btn">
+																<a href="/ams/ams_sub01.html?type=02">
+																	ONE LINK ASSY
+																</a>
+															</div>
+														</li>
+														<li>
+															<div class="btn">
+																<a href="/ams/ams_sub01.html?type=03">
+																	REPAIR KIT
+																</a>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</li>
+											<li>
+												<div class="btn has">
+													<a href="javascript:void(0);">
+														<table cellpadding="0" cellspacing="0">
+															<tbody>
+																<tr>
+																	<td align="left" class="text_td">
+																		<span>
+																			OTHER <br />
+																			UNDERCARRIAGE PARTS
+																		</span>
+																	</td>
+																	<td align="left" class="arrow_td">
+																		<img src="/img/main/main_sub_nav_list_arrow.svg" alt="화살표" class="fx" />
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</a>
+												</div>
+
+												<div class="sub_nav">
+													<ul>
+														<li>
+															<div class="btn">
+																<a href="/onp/onp_sub01.html?type=01">
+																	OTHER <br />
+																	UNDERCARRIAGE <br />
+																	COMPONENTS
+																</a>
+															</div>
+														</li>
+														<li>
+															<div class="btn">
+																<a href="/onp/onp_sub01.html?type=02">
+																	PHOTOS OF <br />
+																	OTHER COMPONENTS
+																</a>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</li>
+											<li>
+												<div class="btn has">
+													<a href="javascript:void(0);">
+														<table cellpadding="0" cellspacing="0">
+															<tbody>
+																<tr>
+																	<td align="left" class="text_td">
+																		<span>
+																			CONTACT US
+																		</span>
+																	</td>
+																	<td align="left" class="arrow_td">
+																		<img src="/img/main/main_sub_nav_list_arrow.svg" alt="화살표" class="fx" />
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</a>
+												</div>
+
+												<div class="sub_nav">
+													<ul>
+														<li>
+															<div class="btn">
+																<a href="/contactus/contactus_sub01.html?type=02">
+																	SALES INQUIRLES
+																</a>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>

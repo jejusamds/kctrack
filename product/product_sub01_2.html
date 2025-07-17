@@ -1,0 +1,153 @@
+<?php
+	$Menu = "02";
+	$sMenu = "02-1";
+	$ssMenu = "02-1-2";
+
+	include $_SERVER['DOCUMENT_ROOT'].'/include/header.html'; 
+?>
+
+	<div id="container">
+		<div id="sub_con">
+			<?
+				include $_SERVER['DOCUMENT_ROOT'].'/include/sub_banner.html'; 
+			?>
+
+			<div class="contents_con">
+				
+				<div class="product_sub_con product_sub01_2 go_product_sub_con">
+					<div class="contents_con">
+						<?
+							include $_SERVER['DOCUMENT_ROOT'].'/product/include/product_sub01_nav.html'; 
+						?>
+
+						<div class="contents_con">
+							<div class="title_con">
+								<span>
+									Excavator Track Link
+								</span>
+							</div>
+
+							<div class="text_con">
+								<span>
+									Our excavator track links are engineered to deliver optimal performance under repetitive digging <br class="w_br" />
+									operations and diverse terrain conditions. Made from corrosion- and impact-resistant special steel, and <br class="w_br" />
+									enhanced through surface hardening treatment, they significantly extend product lifespan and reduce <br class="w_br" />
+									maintenance costs.
+								</span>
+							</div>
+
+							<div class="product_con">
+								<div class="img_con">
+									<img src="/img/product/product_sub01_2_img_con_img.png" alt="컨텐츠 이미지" class="fx" />
+								</div>
+
+								<div class="text_con">
+									<ul>
+										<li>
+											<div class="list_div">
+												<div class="no_con">
+													<span>
+														1.
+													</span>
+												</div>
+
+												<div class="info_con">
+													<span>
+														Precision machining for smooth link articulation and excellent travel performance
+													</span>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="list_div">
+												<div class="no_con">
+													<span>
+														2.
+													</span>
+												</div>
+
+												<div class="info_con">
+													<span>
+														Product lineup tailored to various excavator weight classes
+													</span>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="list_div">
+												<div class="no_con">
+													<span>
+														3.
+													</span>
+												</div>
+
+												<div class="info_con">
+													<span>
+														OEM and custom manufacturing available upon request (based on technical drawings)
+													</span>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function(){
+			gsap.registerPlugin(ScrollTrigger, CustomEase);
+		
+			setTimeout(function(){
+				// .product_sub_con > .contents_con 애니메이션을 기록할 변수
+				let tl_product_sub = null;
+				
+				// .product_sub_con > .contents_con 애니메이션
+				gsap.to(".product_sub_con > .contents_con", {
+					scrollTrigger: {
+						trigger: ".product_sub_con > .contents_con",
+						start: "top center",
+						end: "bottom center",
+						onEnter: () => {
+							// 실행 중인 애니메이션이 없으면 애니메이션 생성 및 실행
+							if (!tl_product_sub) {
+								// 타임라인 생성
+								tl_product_sub = gsap.timeline();
+								
+								//
+								tl_product_sub.to(".product_sub_con > .contents_con > .nav > .list_con > ul > li a, .product_sub_con > .contents_con > .contents_con > .title_con span, .product_sub_con > .contents_con > .contents_con > .text_con span, .product_sub_con > .contents_con > .contents_con > .product_con > .img_con, .product_sub_con > .contents_con > .contents_con > .product_con > .text_con > ul > li .list_div", {
+									opacity: 1,
+									translateY: 0,
+									ease: "ease",
+									duration: 0.8,
+									stagger: {
+										each: 0.2,
+										from: "start",
+									},
+								});
+							}
+						},
+						onLeaveBack: () => {
+							// 실행 중인 애니메이션 중지 및 초기화
+							if (tl_product_sub) {
+								tl_product_sub.kill();
+								tl_product_sub = null;
+							}
+						},
+						//markers: true,
+					},
+				});
+			}, 500);
+
+			ScrollTrigger.refresh();
+		});
+	</script>
+
+<?php
+	include $_SERVER['DOCUMENT_ROOT'].'/include/footer.html'; 
+?>	

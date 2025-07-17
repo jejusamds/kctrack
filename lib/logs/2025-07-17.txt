@@ -1,0 +1,61 @@
+Time : 16:53:10
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dbkctrack1.df_site_sigong' doesn't exist
+Raw SQL : 
+    SELECT COUNT(*)
+    FROM df_site_sigong s
+    WHERE 1 = 1 
+
+Time : 16:49:06
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dbkctrack1.sdfsdwerwer' doesn't exist
+Raw SQL : SELECT * FROM sdfsdwerwer
+
+Time : 16:41:57
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dbkctrack1.df_site_siteinfo' doesn't exist
+Raw SQL :  select * from df_site_siteinfo 
+
+Time : 16:41:25
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dbkctrack1.df_site_siteinfo' doesn't exist
+Raw SQL :  select * from df_site_siteinfo 
+
+Time : 16:40:23
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dbkctrack1.df_site_siteinfo' doesn't exist
+Raw SQL :  select * from df_site_siteinfo 
+
+Time : 16:39:40
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dbkctrack1.df_site_siteinfo' doesn't exist
+Raw SQL :  select * from df_site_siteinfo 
+
+Time : 16:39:19
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dbkctrack1.df_site_siteinfo' doesn't exist
+Raw SQL :  select * from df_site_siteinfo 
+
+Time : 16:38:47
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dbkctrack1.df_site_siteinfo' doesn't exist
+Raw SQL :  select * from df_site_siteinfo 
+
+Time : 16:38:26
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dbkctrack1.df_site_siteinfo' doesn't exist
+Raw SQL :  select * from df_site_siteinfo 
+
+Time : 16:38:18
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dbkctrack1.df_counter_ip' doesn't exist
+Raw SQL : INSERT INTO df_counter_ip (
+			ci_code, ci_pm, ci_ip, ci_domain, ci_yy, ci_mm, ci_dd, ci_ww, ci_hh, ci_hit, ci_uptime
+		) VALUES (
+			'', 'P', '112.220.18.234', '112.220.18.234', '25', '07', '17', '4', '16', 1, UNIX_TIMESTAMP()
+		)
+		ON DUPLICATE KEY UPDATE 
+			ci_hit = ci_hit + 1, 
+			ci_uptime = UNIX_TIMESTAMP()
+
+Time : 16:38:11
+SQLSTATE[HY000] [2002] Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+
+Time : 16:38:09
+SQLSTATE[HY000] [2002] Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+
+Time : 16:33:46
+SQLSTATE[HY000] [2002] Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+
+Time : 16:33:37
+SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (111)
