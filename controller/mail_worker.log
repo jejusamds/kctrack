@@ -1,0 +1,7 @@
+[2025-07-18 10:39:22] sendMailViaGmail g_info db
+[2025-07-18 10:39:22] sendMailViaGmail called 2 → gmailUser: jejusamds@gmail.com, gmailAppPassword: gaff ctos skyi vjlq
+[2025-07-18 10:39:22] PHPMailer Error: Invalid address:  (to): toEmail: , subject: 
+[2025-07-18 10:42:44] PHPMailer Error: Invalid address:  (Reply-To): 234
+[2025-07-18 10:42:44] sendMail result: fail
+[2025-07-18 10:45:41] Mail sent to jejusamds@gmail.com
+[2025-07-18 10:45:41] sendMail result: success

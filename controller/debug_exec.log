@@ -1,0 +1,10 @@
+[2025-07-18 10:39:22] process 진입
+[2025-07-18 10:39:22] process 진입 3
+[2025-07-18 10:39:22] process 진입 4
+[2025-07-18 10:39:22] sendMailViaGmail 진입
+[2025-07-18 10:39:22] 스크립트 종료
+[2025-07-18 10:42:44] HTTP mail_process start
+[2025-07-18 10:42:44] Params: toEmail=jejusamds@gmail.com, toName=담당자, replyTo=234, attachment=
+[2025-07-18 10:45:37] HTTP mail_process start
+[2025-07-18 10:45:37] Params: toEmail=jejusamds@gmail.com, toName=담당자, attachment=
+[2025-07-18 10:45:37] sendMail start

@@ -1,0 +1,2 @@
+PHP_BINARY = /usr/local/php74/sbin/php-fpm
+PHP_BINARY = /usr/local/php74/sbin/php-fpm

@@ -1,115 +1,92 @@
+```php
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/inc/global.inc';
 include $_SERVER['DOCUMENT_ROOT'] . '/inc/util_lib.inc';
 
 header('Content-Type: application/json; charset=utf-8');
 
-// 필수 값 검증
-if (!isset($_POST['f_subject'], $_POST['f_name_company'], $_POST['f_phone'], $_POST['f_email'], $_POST['f_message'])) {
-    echo json_encode(['result' => 'error', 'msg' => '필수 항목이 누락되었습니다.', 'post' => $_POST]);
+// 1) 필수 값 검증
+if (!isset(
+    $_POST['f_subject'],
+    $_POST['f_name_company'],
+    $_POST['f_phone'],
+    $_POST['f_email'],
+    $_POST['f_message']
+)) {
+    echo json_encode([
+        'result' => 'error',
+        'msg'    => '필수 항목이 누락되었습니다.',
+        'post'   => $_POST
+    ]);
     exit;
 }
 
-// DB 저장 (AS 문의 테이블 예시: df_site_form_as)
-$subject = addslashes(trim($_POST['f_subject']));
-$nameCompany = addslashes(trim($_POST['f_name_company']));
-$phone = addslashes(trim($_POST['f_phone']));
-$email = addslashes(trim($_POST['f_email']));
+// 2) DB 저장을 위한 변수 준비
+$subject         = addslashes(trim($_POST['f_subject']));
+$nameCompany     = addslashes(trim($_POST['f_name_company']));
+$phone           = addslashes(trim($_POST['f_phone']));
+$email           = addslashes(trim($_POST['f_email']));
 $contractProject = addslashes(trim($_POST['f_contract_project']));
-$message = addslashes(trim($_POST['f_message']));
+$message         = addslashes(trim($_POST['f_message']));
 
+// 3) 첨부 파일 처리
 $attachmentName = '';
-if (isset($_FILES['f_attachment']) && $_FILES['f_attachment']['error'] === UPLOAD_ERR_OK) {
-    // 파일명만 저장 (원본 이름 그대로, 또는 별도 처리)
-    $origName = $_FILES['f_attachment']['name'];
-    $ext = strtolower(pathinfo($origName, PATHINFO_EXTENSION));
-    $uniqName = 'as_' . time() . '.' . $ext;
+if (!empty($_FILES['f_attachment']) && $_FILES['f_attachment']['error'] === UPLOAD_ERR_OK) {
+    $ext       = strtolower(pathinfo($_FILES['f_attachment']['name'], PATHINFO_EXTENSION));
+    $uniqName  = 'as_' . time() . '.' . $ext;
     $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/userfiles/form_attachments/';
-    if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0707, true);
-    }
-    $fullPath = $uploadDir . $uniqName;
-    move_uploaded_file($_FILES['f_attachment']['tmp_name'], $fullPath);
+    if (!is_dir($uploadDir)) mkdir($uploadDir, 0707, true);
+    move_uploaded_file($_FILES['f_attachment']['tmp_name'], $uploadDir . $uniqName);
     $attachmentName = $uniqName;
 }
 
-// SQL 삽입
-$sql = "INSERT INTO df_site_form_as ";
-$sql .= "(f_subject, f_name_company, f_phone, f_email, f_contract_project, f_attachment, f_message) ";
-$sql .= "VALUES ";
-$sql .= "('{$subject}','{$nameCompany}','{$phone}','{$email}','{$contractProject}','{$attachmentName}','{$message}')";
+// 4) DB에 문의 저장
+$sql = "INSERT INTO df_site_form_as
+    (f_subject, f_name_company, f_phone, f_email, f_contract_project, f_attachment, f_message)
+ VALUES
+    ('{$subject}','{$nameCompany}','{$phone}','{$email}','{$contractProject}','{$attachmentName}','{$message}')";
 $db->query($sql);
 
-
-$sql = "select g_manager_email from df_site_siteinfo";
-$g_info = $db->row($sql);
-
-// 사용자에게 “접수 완료” JSON 응답
-echo json_encode(['result' => 'ok', 'msg' => '문의가 정상 접수되었습니다.', 'redirect' => '/']);
-flush(); // 출력 버퍼 클리어
-
-// 백그라운드로 메일 전송 실행
-//    - CLI 경로: PHP_BINARY 또는 직접 php 경로
-$possiblePhp = [
-    '/usr/bin/php',               // 일반적인 리눅스 PHP CLI
-    '/usr/local/bin/php',         // 어떤 공유 호스팅에선 여기에 설치됨
-    '/usr/bin/php-cli',           // 또 다른 예시
-    '/usr/local/php/bin/php',     // (호스팅마다 다르게 설치될 수 있음)
-    PHP_BINDIR . '/php',          // PHP_BINDIR이 가리키는 디렉터리 + php
-];
-
-// 사용 가능한 PHP CLI 경로
-$phpCli = null;
-foreach ($possiblePhp as $path) {
-    if (file_exists($path) && is_executable($path)) {
-        $phpCli = $path;
-        break;
-    }
-}
-
-if ($phpCli === null) {
-    $phpCli = '/usr/bin/php';
-}
-
-$worker = $_SERVER['DOCUMENT_ROOT'] . '/controller/mail_process.php';
-
+// 5) 관리자 메일 조회
+$g_info = $db->row("SELECT g_manager_email FROM df_site_siteinfo LIMIT 1");
 $toEmail = $g_info['g_manager_email'];
-$toName = '담당자';
-$mailSub = "[AS 문의] " . $subject;
-$mailBody = "
-    <h2>AS 문의 접수</h2>
-    <p><strong>제목:</strong> " . htmlspecialchars($subject, ENT_QUOTES) . "</p>
-    <p><strong>이름/회사명:</strong> " . htmlspecialchars($nameCompany, ENT_QUOTES) . "</p>
-    <p><strong>연락처:</strong> " . htmlspecialchars($phone, ENT_QUOTES) . "</p>
-    <p><strong>이메일:</strong> " . htmlspecialchars($email, ENT_QUOTES) . "</p>
-    <p><strong>계약공사명:</strong> " . htmlspecialchars($contractProject, ENT_QUOTES) . "</p>
-    <p><strong>문의사항:</strong><br>" . nl2br(htmlspecialchars($_POST['f_message'], ENT_QUOTES)) . "</p>
-";
+$toName  = '담당자';
+$mailSub = "[AS 문의] {$subject}";
+$mailBody =
+    "<h2>AS 문의 접수</h2>" .
+    "<p><strong>제목:</strong> " . htmlspecialchars($subject, ENT_QUOTES) . "</p>" .
+    "<p><strong>이름/회사명:</strong> " . htmlspecialchars($nameCompany, ENT_QUOTES) . "</p>" .
+    "<p><strong>연락처:</strong> " . htmlspecialchars($phone, ENT_QUOTES) . "</p>" .
+    "<p><strong>이메일:</strong> " . htmlspecialchars($email, ENT_QUOTES) . "</p>" .
+    "<p><strong>계약공사명:</strong> " . htmlspecialchars($contractProject, ENT_QUOTES) . "</p>" .
+    "<p><strong>문의사항:</strong><br>" . nl2br(htmlspecialchars($_POST['f_message'], ENT_QUOTES)) . "</p>";
 
-// 첨부파일 절대 경로(없으면 빈 문자열)
-$attachmentPath = '';
-if ($attachmentName !== '') {
-    $attachmentPath = $_SERVER['DOCUMENT_ROOT'] . '/userfiles/form_attachments/' . $attachmentName;
-}
+// 6) JSON 응답 후 즉시 종료 (비동기 호출 위해)
+echo json_encode(['result' => 'ok', 'msg' => '접수가 완료되었습니다.']);
+flush();
 
-$cmdParts = [
-    escapeshellcmd($phpCli),
-    escapeshellarg($worker),
-    escapeshellarg($toEmail),
-    escapeshellarg($toName),
-    escapeshellarg($mailSub),
-    escapeshellarg($mailBody),
-    escapeshellarg($email),
-];
-if ($attachmentPath !== '') {
-    $cmdParts[] = escapeshellarg($attachmentPath);
-}
-$cmd = implode(' ', $cmdParts) . ' > /dev/null 2>&1 &';
+// 7) 비동기 HTTP 요청으로 메일 프로세스 호출
+$query = http_build_query([
+    'toEmail'       => $toEmail,
+    'toName'        => $toName,
+    'mailSub'       => $mailSub,
+    'mailBody'      => $mailBody,
+    'replyTo'       => $email,
+    'attachment'    => $attachmentName
+]);
 
-// // debug 로그 남기기
-// file_put_contents(__DIR__ . '/form_exec_log.txt',
-//     date('[Y-m-d H:i:s] ') . "exec 명령: {$cmd}\n",
-//     FILE_APPEND
-// );
+// 프로토콜과 호스트 정보
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
+$url = "{$protocol}://" . $_SERVER['HTTP_HOST'] . "/controller/mail_process.php?{$query}";
 
-exec($cmd);
+// cURL 초기화 및 옵션 설정
+$ch = curl_init($url);
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_TIMEOUT        => 1,
+    CURLOPT_CONNECTTIMEOUT => 1,
+]);
+curl_exec($ch);
+curl_close($ch);
+
+exit;
