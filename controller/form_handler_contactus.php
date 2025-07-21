@@ -58,16 +58,40 @@ $mailBody = "<h2>Contact Us Inquiry</h2>" .
     "<p><strong>연락처:</strong> " . htmlspecialchars($contact, ENT_QUOTES) . "</p>" .
     "<p><strong>문의내용:</strong><br>" . nl2br(htmlspecialchars($_POST['f_message'], ENT_QUOTES)) . "</p>";
 
-$cmdParts = [
-    escapeshellcmd($phpCli),
-    escapeshellarg($worker),
-    escapeshellarg($toEmail),
-    escapeshellarg($toName),
-    escapeshellarg($mailSub),
-    escapeshellarg($mailBody),
-    escapeshellarg($email)
-];
-$cmd = implode(' ', $cmdParts) . ' > /dev/null 2>&1 &';
-exec($cmd);
+$query = http_build_query([
+    'toEmail'       => $toEmail,
+    'toName'        => $toName,
+    'mailSub'       => $mailSub,
+    'mailBody'      => $mailBody,
+    'attachment'    => $attachmentName
+]);
+
+// 프로토콜과 호스트 정보
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
+$url = "{$protocol}://" . $_SERVER['HTTP_HOST'] . "/controller/mail_process.php?{$query}";
+
+// cURL 초기화 및 옵션 설정
+$ch = curl_init($url);
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_TIMEOUT        => 1,
+    CURLOPT_CONNECTTIMEOUT => 1,
+]);
+curl_exec($ch);
+curl_close($ch);
+
 exit;
+
+// $cmdParts = [
+//     escapeshellcmd($phpCli),
+//     escapeshellarg($worker),
+//     escapeshellarg($toEmail),
+//     escapeshellarg($toName),
+//     escapeshellarg($mailSub),
+//     escapeshellarg($mailBody),
+//     escapeshellarg($email)
+// ];
+// $cmd = implode(' ', $cmdParts) . ' > /dev/null 2>&1 &';
+// exec($cmd);
+// exit;
 ?>

@@ -8,3 +8,9 @@
 [2025-07-18 10:45:37] HTTP mail_process start
 [2025-07-18 10:45:37] Params: toEmail=jejusamds@gmail.com, toName=담당자, attachment=
 [2025-07-18 10:45:37] sendMail start
+[2025-07-18 11:01:26] HTTP mail_process start
+[2025-07-18 11:01:26] Params: toEmail=jejusamds@gmail.com, toName=담당자, attachment=
+[2025-07-18 11:01:26] sendMail start
+[2025-07-18 11:02:51] HTTP mail_process start
+[2025-07-18 11:02:51] Params: toEmail=jejusamds@gmail.com, toName=담당자, attachment=
+[2025-07-18 11:02:51] sendMail start

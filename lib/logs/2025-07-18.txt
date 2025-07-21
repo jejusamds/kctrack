@@ -1,0 +1,23 @@
+Time : 13:25:25
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'code' in 'where clause'
+Raw SQL :  Select wp.* From df_site_aboutus_images wp Where 1 = 1 and code = 'aboutus'  And wp.prior <= '250718114710' And wp.idx != '2' Order by wp.prior Desc Limit 1 
+
+Time : 13:00:24
+SQLSTATE[HY093]: Invalid parameter number
+Raw SQL : UPDATE df_site_aboutus_images SET f_title=:f_title,upfile_pc=:upfile_pc WHERE idx=:idx
+
+Time : 11:46:48
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(f_title, upfile_pc, upfile_mobile ,prior, wdate) VALUES (?, ?, ?, ?, NOW())' at line 1
+Raw SQL : INSERT INTO  (f_title, upfile_pc, upfile_mobile ,prior, wdate) VALUES (:f_title, :upfile_pc, :upfile_mobile, :prior, NOW())
+
+Time : 11:44:36
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(f_title, upfile_pc, upfile_mobile ,prior, wdate) VALUES (?, ?, ?, ?, NOW())' at line 1
+Raw SQL : INSERT INTO  (f_title, upfile_pc, upfile_mobile ,prior, wdate) VALUES (:f_title, :upfile_pc, :upfile_mobile, :prior, NOW())
+
+Time : 11:44:04
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(f_title, upfile_pc, upfile_mobile ,prior, wdate) VALUES (?, ?, ?, ?, NOW())' at line 1
+Raw SQL : INSERT INTO  (f_title, upfile_pc, upfile_mobile ,prior, wdate) VALUES (:f_title, :upfile_pc, :upfile_mobile, :prior, NOW())
+
+Time : 11:16:46
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dbkctrack1.df_site_main_slide' doesn't exist
+Raw SQL : SELECT * FROM df_site_main_slide ORDER BY prior DESC

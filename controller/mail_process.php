@@ -1,4 +1,3 @@
-```php
 <?php
 // controller/mail_process.php
 // HTTP GET 호출 방식으로 메일 전송 워커 (replyTo 제거)
