@@ -144,52 +144,21 @@
 
 								<div class="contents_con">
 									<div class="list_con">
-										<div class="list_con">
-											<ul>
-												<li>
-													<a href="javascript:aboutus_sub01_info03_popup(0);">
-														<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img01.png');">
-															<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-														</div>
-													</a>
-												</li>
-												<li>
-													<a href="javascript:aboutus_sub01_info03_popup(1);">
-														<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img02.png');">
-															<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-														</div>
-													</a>
-												</li>
-												<li>
-													<a href="javascript:aboutus_sub01_info03_popup(2);">
-														<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img03.png');">
-															<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-														</div>
-													</a>
-												</li>
-												<li>
-													<a href="javascript:aboutus_sub01_info03_popup(3);">
-														<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img04.png');">
-															<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-														</div>
-													</a>
-												</li>
-												<li>
-													<a href="javascript:aboutus_sub01_info03_popup(4);">
-														<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img05.png');">
-															<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-														</div>
-													</a>
-												</li>
-												<li>
-													<a href="javascript:aboutus_sub01_info03_popup(5);">
-														<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img06.png');">
-															<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-														</div>
-													</a>
-												</li>
-											</ul>
-										</div>
+                                                                       <div class="list_con">
+                                                                               <ul>
+                                                                               <?php
+                                                                               $aboutusImages = $db->query("SELECT * FROM df_site_aboutus_images ORDER BY prior DESC");
+                                                                               foreach ($aboutusImages as $i => $img) { ?>
+                                                                               <li>
+                                                                               <a href="javascript:aboutus_sub01_info03_popup(<?php echo $i; ?>);">
+                                                                               <div class="img_con" style="background-image:url('/userfiles/images/<?php echo $img['upfile_pc']; ?>');">
+                                                                               <img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+                                                                               </div>
+                                                                               </a>
+                                                                               </li>
+                                                                               <?php } ?>
+                                                                               </ul>
+                                                                               </div>
 
 										<div class="number_list_con">
 											<div class="contents_con">
@@ -242,40 +211,17 @@
 											</div>
 
 											<div class="slide_con">
-												<div class="swiper aboutus_sub01_info03_popup_slide">
-													<div class="swiper-wrapper">
-														<div class="swiper-slide aboutus_sub01_info03_popup_slide_div">
-															<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img01.png');">
-																<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-															</div>
-														</div>
-														<div class="swiper-slide aboutus_sub01_info03_popup_slide_div">
-															<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img02.png');">
-																<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-															</div>
-														</div>
-														<div class="swiper-slide aboutus_sub01_info03_popup_slide_div">
-															<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img03.png');">
-																<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-															</div>
-														</div>
-														<div class="swiper-slide aboutus_sub01_info03_popup_slide_div">
-															<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img04.png');">
-																<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-															</div>
-														</div>
-														<div class="swiper-slide aboutus_sub01_info03_popup_slide_div">
-															<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img05.png');">
-																<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-															</div>
-														</div>
-														<div class="swiper-slide aboutus_sub01_info03_popup_slide_div">
-															<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img06.png');">
-																<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-															</div>
-														</div>
-													</div>
-												</div>
+                                                                       <div class="swiper aboutus_sub01_info03_popup_slide">
+                                                                               <div class="swiper-wrapper">
+                                                                               <?php foreach ($aboutusImages as $img) { ?>
+                                                                               <div class="swiper-slide aboutus_sub01_info03_popup_slide_div">
+                                                                               <div class="img_con" style="background-image:url('/userfiles/images/<?php echo $img['upfile_pc']; ?>');">
+                                                                               <img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+                                                                               </div>
+                                                                               </div>
+                                                                               <?php } ?>
+                                                                               </div>
+                                                                       </div>
 
 												<div class="swiper-button-prev slide_btn prev aboutus_sub01_info03_popup_slide_prev_btn">
 													<img src="/img/aboutus/aboutus_sub01_info03_popup_slide_prev_btn.svg" alt="슬라이드 이전 버튼" class="fx" />
@@ -287,46 +233,18 @@
 											</div>
 
 											<div class="thumbnail_slide_con">
-												<div class="swiper aboutus_sub01_info03_popup_thumbnail_slide">
-													<div class="swiper-wrapper">
-														<div class="swiper-slide aboutus_sub01_info03_popup_thumbnail_slide_div">
-															<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img01.png');">
-																<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-																<div class="over_con"></div>
-															</div>
-														</div>
-														<div class="swiper-slide aboutus_sub01_info03_popup_thumbnail_slide_div">
-															<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img02.png');">
-																<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-																<div class="over_con"></div>
-															</div>
-														</div>
-														<div class="swiper-slide aboutus_sub01_info03_popup_thumbnail_slide_div">
-															<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img03.png');">
-																<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-																<div class="over_con"></div>
-															</div>
-														</div>
-														<div class="swiper-slide aboutus_sub01_info03_popup_thumbnail_slide_div">
-															<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img04.png');">
-																<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-																<div class="over_con"></div>
-															</div>
-														</div>
-														<div class="swiper-slide aboutus_sub01_info03_popup_thumbnail_slide_div">
-															<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img05.png');">
-																<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-																<div class="over_con"></div>
-															</div>
-														</div>
-														<div class="swiper-slide aboutus_sub01_info03_popup_thumbnail_slide_div">
-															<div class="img_con" style="background-image:url('/img/aboutus/aboutus_sub01_info03_list_img_con_img06.png');">
-																<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-																<div class="over_con"></div>
-															</div>
-														</div>
-													</div>
-												</div>
+                                                                       <div class="swiper aboutus_sub01_info03_popup_thumbnail_slide">
+                                                                               <div class="swiper-wrapper">
+                                                                               <?php foreach ($aboutusImages as $img) { ?>
+                                                                               <div class="swiper-slide aboutus_sub01_info03_popup_thumbnail_slide_div">
+                                                                               <div class="img_con" style="background-image:url('/userfiles/images/<?php echo $img['upfile_pc']; ?>');">
+                                                                               <img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+                                                                               <div class="over_con"></div>
+                                                                               </div>
+                                                                               </div>
+                                                                               <?php } ?>
+                                                                               </div>
+                                                                       </div>
 											</div>
 
 											<div class="text_con">
