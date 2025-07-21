@@ -171,7 +171,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/include/header.html';
                             <div class="contents_con">
                                 <div class="list_con">
                                     <div class="list_con">
-                                        <ul>
+                                        <ul id="aboutusImageList">
                                             <?php
                                             $aboutusImages = $db->query("SELECT * FROM df_site_aboutus_images ORDER BY prior DESC");
                                             foreach ($aboutusImages as $i => $img) { ?>
@@ -191,36 +191,32 @@ include $_SERVER['DOCUMENT_ROOT'] . '/include/header.html';
                                     <div class="number_list_con">
                                         <div class="contents_con">
                                             <div class="btn_con">
-                                                <a href="#">
+                                                <a data-page="first">
                                                     <img src="/img/sub/number_list_prev_btn2.svg" alt="번호목록 이전2 버튼"
                                                         class="fx" />
                                                 </a>
 
-                                                <a href="#">
+                                                <a data-page="prev">
                                                     <img src="/img/sub/number_list_prev_btn.svg" alt="번호목록 이전 버튼"
                                                         class="fx" />
                                                 </a>
                                             </div>
 
                                             <div class="list_con">
-                                                <a href="#" class="list_a">
-                                                    01
-                                                </a>
+                                                <a class="list_a" data-page="1">01</a>
 
-                                                <a href="#" class="list_a">
-                                                    04
-                                                </a>
+                                                <a class="list_a" data-page="4">04</a>
 
                                                 <div class="bar"></div>
                                             </div>
 
                                             <div class="btn_con">
-                                                <a href="#">
+                                                <a data-page="next">
                                                     <img src="/img/sub/number_list_next_btn.svg" alt="번호목록 다음 버튼"
                                                         class="fx" />
                                                 </a>
 
-                                                <a href="#">
+                                                <a data-page="last">
                                                     <img src="/img/sub/number_list_next_btn2.svg" alt="번호목록 다음2 버튼"
                                                         class="fx" />
                                                 </a>
@@ -578,7 +574,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/include/header.html';
         ScrollTrigger.refresh();
     });
 </script>
-
 <script type="text/javascript" language="javascript">
     // info03 팝업 열기/닫기
     function aboutus_sub01_info03_popup(type) {
@@ -767,6 +762,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/include/header.html';
         }, 500);
     });
 </script>
+<script src="/js/aboutus_sub01.js"></script>
 
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/include/footer.html';
