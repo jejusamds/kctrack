@@ -167,61 +167,37 @@ include $_SERVER['DOCUMENT_ROOT'] . '/include/header.html';
                                     CERTIFICATION
                                 </span>
                             </div>
-
                             <div class="contents_con">
                                 <div class="list_con">
                                     <div class="list_con">
-                                        <ul>
-                                            <?php
-                                            $aboutusImages = $db->query("SELECT * FROM df_site_aboutus_images ORDER BY prior DESC");
-                                            foreach ($aboutusImages as $i => $img) { ?>
-                                                <li>
-                                                    <a href="javascript:aboutus_sub01_info03_popup(<?php echo $i; ?>);">
-                                                        <div class="img_con"
-                                                            style="background-image:url('/userfiles/images/<?php echo $img['upfile_pc']; ?>');">
-                                                            <img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png"
-                                                                alt="블랭크 이미지" class="fx" />
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            <?php } ?>
+                                        <ul id="aboutus-image-list">
+                                            <!-- AJAX 로 채워집니다 -->
                                         </ul>
                                     </div>
-
                                     <div class="number_list_con">
                                         <div class="contents_con">
                                             <div class="btn_con">
-                                                <a href="#">
-                                                    <img src="/img/sub/number_list_prev_btn2.svg" alt="번호목록 이전2 버튼"
+                                                <a href="#" id="first-page">
+                                                    <img src="/img/sub/number_list_prev_btn2.svg" alt="첫페이지"
                                                         class="fx" />
                                                 </a>
-
-                                                <a href="#">
-                                                    <img src="/img/sub/number_list_prev_btn.svg" alt="번호목록 이전 버튼"
+                                                <a href="#" id="prev-page">
+                                                    <img src="/img/sub/number_list_prev_btn.svg" alt="이전페이지"
                                                         class="fx" />
                                                 </a>
                                             </div>
 
-                                            <div class="list_con">
-                                                <a href="#" class="list_a">
-                                                    01
-                                                </a>
-
-                                                <a href="#" class="list_a">
-                                                    04
-                                                </a>
-
-                                                <div class="bar"></div>
+                                            <div class="list_con" id="page-numbers">
+                                                <!-- 1 과 마지막 페이지만 AJAX 후 렌더 -->
                                             </div>
 
                                             <div class="btn_con">
-                                                <a href="#">
-                                                    <img src="/img/sub/number_list_next_btn.svg" alt="번호목록 다음 버튼"
+                                                <a href="#" id="next-page">
+                                                    <img src="/img/sub/number_list_next_btn.svg" alt="다음페이지"
                                                         class="fx" />
                                                 </a>
-
-                                                <a href="#">
-                                                    <img src="/img/sub/number_list_next_btn2.svg" alt="번호목록 다음2 버튼"
+                                                <a href="#" id="last-page">
+                                                    <img src="/img/sub/number_list_next_btn2.svg" alt="마지막페이지"
                                                         class="fx" />
                                                 </a>
                                             </div>
@@ -234,70 +210,210 @@ include $_SERVER['DOCUMENT_ROOT'] . '/include/header.html';
                                     <div class="contents_con">
                                         <div class="close_btn">
                                             <a href="javascript:aboutus_sub01_info03_popup();" class="a_btn">
-                                                <span>
-                                                    Close
-                                                </span>
-
-                                                <img src="/img/sub/popup_close_btn_icon.svg" alt="아이콘" class="fx" />
+                                                <span>Close</span>
+                                                <img src="/img/sub/popup_close_btn_icon.svg" alt="닫기" class="fx" />
                                             </a>
                                         </div>
 
                                         <div class="slide_con">
                                             <div class="swiper aboutus_sub01_info03_popup_slide">
-                                                <div class="swiper-wrapper">
-                                                    <?php foreach ($aboutusImages as $img) { ?>
-                                                        <div class="swiper-slide aboutus_sub01_info03_popup_slide_div">
-                                                            <div class="img_con"
-                                                                style="background-image:url('/userfiles/images/<?php echo $img['upfile_pc']; ?>');">
-                                                                <img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png"
-                                                                    alt="블랭크 이미지" class="fx" />
-                                                            </div>
-                                                        </div>
-                                                    <?php } ?>
+                                                <div class="swiper-wrapper" id="popup-main-wrapper">
+                                                    <!-- AJAX 로 채워집니다 -->
                                                 </div>
                                             </div>
-
                                             <div
                                                 class="swiper-button-prev slide_btn prev aboutus_sub01_info03_popup_slide_prev_btn">
                                                 <img src="/img/aboutus/aboutus_sub01_info03_popup_slide_prev_btn.svg"
-                                                    alt="슬라이드 이전 버튼" class="fx" />
+                                                    alt="이전" class="fx" />
                                             </div>
-
                                             <div
                                                 class="swiper-button-next slide_btn next aboutus_sub01_info03_popup_slide_next_btn">
                                                 <img src="/img/aboutus/aboutus_sub01_info03_popup_slide_next_btn.svg"
-                                                    alt="슬라이드 다음 버튼" class="fx" />
+                                                    alt="다음" class="fx" />
                                             </div>
                                         </div>
 
                                         <div class="thumbnail_slide_con">
                                             <div class="swiper aboutus_sub01_info03_popup_thumbnail_slide">
-                                                <div class="swiper-wrapper">
-                                                    <?php foreach ($aboutusImages as $img) { ?>
-                                                        <div
-                                                            class="swiper-slide aboutus_sub01_info03_popup_thumbnail_slide_div">
-                                                            <div class="img_con"
-                                                                style="background-image:url('/userfiles/images/<?php echo $img['upfile_pc']; ?>');">
-                                                                <img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png"
-                                                                    alt="블랭크 이미지" class="fx" />
-                                                                <div class="over_con"></div>
-                                                            </div>
-                                                        </div>
-                                                    <?php } ?>
+                                                <div class="swiper-wrapper" id="popup-thumb-wrapper">
+                                                    <!-- AJAX 로 채워집니다 -->
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="text_con">
                                             <div class="swiper-pagination main_slide_swiper-pagination"></div>
-
                                             <div class="bar"></div>
-
                                             <span class="total_text"></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- jQuery → Swiper.js → 이 스크립트 순으로 로드될 것 -->
+                            <script>
+                                $(document).ready(function () {
+
+                                    // 전역 변수
+                                    var currentPage = 1,
+                                        totalPages = 1;
+                                    var $listUl = $('#aboutus-image-list'),
+                                        $pagerDiv = $('#page-numbers'),
+                                        $first = $('#first-page'),
+                                        $prev = $('#prev-page'),
+                                        $next = $('#next-page'),
+                                        $last = $('#last-page');
+                                    var mainSwiper, thumbSwiper;
+
+                                    // Swiper 초기화 함수
+                                    function initSwiper() {
+                                        if (mainSwiper) {
+                                            mainSwiper.destroy();
+                                            thumbSwiper.destroy();
+                                        }
+                                        mainSwiper = new Swiper('.aboutus_sub01_info03_popup_slide', {
+                                            loop: false,
+                                            navigation: {
+                                                nextEl: '.aboutus_sub01_info03_popup_slide_next_btn',
+                                                prevEl: '.aboutus_sub01_info03_popup_slide_prev_btn'
+                                            },
+                                            pagination: { el: '.main_slide_swiper-pagination', clickable: true }
+                                        });
+                                        thumbSwiper = new Swiper('.aboutus_sub01_info03_popup_thumbnail_slide', {
+                                            slidesPerView: 4,
+                                            spaceBetween: 10,
+                                            slideToClickedSlide: true
+                                        });
+                                        mainSwiper.controller.control = thumbSwiper;
+                                        thumbSwiper.controller.control = mainSwiper;
+                                    }
+
+                                    // 페이지 번호 렌더링
+                                    function renderPageNumbers() {
+                                        $pagerDiv.empty();
+                                        $('<a>')
+                                            .addClass('list_a')
+                                            .attr('href', '#')
+                                            .text('1')
+                                            .toggleClass('active', currentPage === 1)
+                                            .data('page', 1)
+                                            .appendTo($pagerDiv);
+                                        $('<a>')
+                                            .addClass('list_a')
+                                            .attr('href', '#')
+                                            .text(totalPages)
+                                            .toggleClass('active', currentPage === totalPages)
+                                            .data('page', totalPages)
+                                            .appendTo($pagerDiv);
+                                        $('<div>').addClass('bar').appendTo($pagerDiv);
+                                    }
+
+                                    // AJAX 로딩 함수
+                                    function loadImages(page) {
+                                        console.log('[DEBUG] loadImages 호출, page =', page);
+                                        $.getJSON('/controller/get_aboutus_images.php', { page: page })
+                                            .done(function (res) {
+                                                console.log('[DEBUG] AJAX done →', res);
+                                                currentPage = page;
+                                                totalPages = res.total_pages;
+
+                                                // 1) 리스트 렌더
+                                                $listUl.empty();
+                                                res.images.forEach(function (img, idx) {
+                                                    // 초기 로딩과 완전 동일한 style
+                                                    var styleStr = ''
+                                                        + "background-image: url('/userfiles/images/" + img.upfile_pc + "'); "
+                                                        + "translate: none; rotate: none; scale: none; "
+                                                        + "transform: translate(0px, 0px); opacity: 1;";
+
+                                                    var liHtml = ''
+                                                        + '<li>'
+                                                        + '<a href="javascript:aboutus_sub01_info03_popup(' + idx + ');">'
+                                                        + '<div class="img_con" style="' + styleStr + '">'
+                                                        + '<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" '
+                                                        + 'alt="블랭크 이미지" class="fx" />'
+                                                        + '</div>'
+                                                        + '</a>'
+                                                        + '</li>';
+                                                    $listUl.append(liHtml);
+                                                });
+
+                                                // 2) 팝업 슬라이드 렌더
+                                                var $mainW = $('#popup-main-wrapper').empty();
+                                                var $thumbW = $('#popup-thumb-wrapper').empty();
+                                                res.images.forEach(function (img, idx) {
+                                                    var styleStr = ''
+                                                        + "background-image: url('/userfiles/images/" + img.upfile_pc + "'); "
+                                                        + "translate: none; rotate: none; scale: none; "
+                                                        + "transform: translate(0px, 0px); opacity: 1;";
+
+                                                    var mainHtml = ''
+                                                        + '<div class="swiper-slide aboutus_sub01_info03_popup_slide_div">'
+                                                        + '<div class="img_con" style="' + styleStr + '">'
+                                                        + '<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" '
+                                                        + 'alt="블랭크 이미지" class="fx" />'
+                                                        + '</div>'
+                                                        + '</div>';
+                                                    var thumbHtml = ''
+                                                        + '<div class="swiper-slide aboutus_sub01_info03_popup_thumbnail_slide_div">'
+                                                        + '<div class="img_con" style="' + styleStr + '">'
+                                                        + '<img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" '
+                                                        + 'alt="블랭크 이미지" class="fx" />'
+                                                        + '<div class="over_con"></div>'
+                                                        + '</div>'
+                                                        + '</div>';
+
+                                                    $mainW.append(mainHtml);
+                                                    $thumbW.append(thumbHtml);
+                                                });
+
+                                                // 3) 페이징 갱신
+                                                renderPageNumbers();
+                                                $first.toggleClass('disabled', currentPage === 1);
+                                                $prev.toggleClass('disabled', currentPage === 1);
+                                                $next.toggleClass('disabled', currentPage === totalPages);
+                                                $last.toggleClass('disabled', currentPage === totalPages);
+
+                                                // 4) Swiper 재초기화
+                                                initSwiper();
+                                            })
+                                            .fail(function (jqXHR, textStatus, errorThrown) {
+                                                console.error('[DEBUG] AJAX fail:', textStatus, errorThrown);
+                                                console.log('[DEBUG] responseText:', jqXHR.responseText);
+                                            })
+                                            .always(function () {
+                                                console.log('[DEBUG] AJAX always');
+                                            });
+                                    }
+
+
+                                    // 네비 버튼 바인딩
+                                    $first.on('click', function (e) {
+                                        e.preventDefault();
+                                        if (currentPage > 1) loadImages(1);
+                                    });
+                                    $prev.on('click', function (e) {
+                                        e.preventDefault();
+                                        if (currentPage > 1) loadImages(currentPage - 1);
+                                    });
+                                    $next.on('click', function (e) {
+                                        e.preventDefault();
+                                        if (currentPage < totalPages) loadImages(currentPage + 1);
+                                    });
+                                    $last.on('click', function (e) {
+                                        e.preventDefault();
+                                        if (currentPage < totalPages) loadImages(totalPages);
+                                    });
+                                    $pagerDiv.on('click', 'a.list_a', function (e) {
+                                        e.preventDefault();
+                                        var pg = $(this).data('page');
+                                        if (pg && pg !== currentPage) loadImages(pg);
+                                    });
+
+                                    // 최초 호출
+                                    loadImages(1);
+                                });
+                            </script>
                         </div>
                     </div>
 
@@ -641,6 +757,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/include/header.html';
                     el: ".main_slide_swiper-pagination",
                     clickable: true,
                     renderBullet: function (index, className) {
+                        console.log(index);
+                        console.log(className);
                         return '<span class="' + className + '">' + (index + 1) + "</span>";
                     },
                 },
