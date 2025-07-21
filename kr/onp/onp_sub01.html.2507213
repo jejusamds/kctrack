@@ -2,13 +2,13 @@
 	$Menu = "04";
 	$sMenu = "04-1";
 
-	include $_SERVER['DOCUMENT_ROOT'].'/include/header.html'; 
+	include $_SERVER['DOCUMENT_ROOT'].'/kr/include/header.html'; 
 ?>
 
 	<div id="container">
 		<div id="sub_con">
 			<?
-				include $_SERVER['DOCUMENT_ROOT'].'/include/sub_banner.html'; 
+				include $_SERVER['DOCUMENT_ROOT'].'/kr/include/sub_banner.html'; 
 			?>
 
 			<div class="contents_con">
@@ -19,8 +19,7 @@
 							<div class="contents_con">
 								<div class="title_con">
 									<span>
-										OTHER <br />
-										UNDERCARRIAGE <br class="m_br" />COMPONENTS
+										기타 하부주행 부품
 									</span>
 								</div>
 
@@ -28,20 +27,17 @@
 									<div class="text_con">
 										<div class="text01_con">
 											<span>
-												Korea Crawler Track Ltd., based in Jinju, South Korea, <br class="w_br" />
-												is a trusted manufacturer of reliable undercarriage <br class="m_br" />solutions, <br class="w_br" />
-												specializing in track links for heavy <br class="m_br" />equipment. We are committed <br class="w_br" />
-												to delivering <br class="m_br" />durable and precision-engineered components <br />
-												that meet the demands of global construction and <br class="m_br" />mining <br class="w_br" />
-												industries.
+												경상남도 진주에서 전하는 믿음직한 하부주행 솔루션 <br class="w_br" />
+												코리아크롤러트랙㈜는 중장비용 트랙 링크 전문 제조업체로서, <br class="w_br" />
+												전 세계 건설 및 광산 산업의 요구를 충족하는 내구성 뛰어난 <br class="w_br" />
+												정밀 부품을 제공하기 위해 최선을 다하고 있습니다. 
 											</span>
 										</div>
 
 										<div class="text02_con">
 											<div class="text01_con">
 												<span>
-													In addition to our core product, TRACK LINK ASSY, <br class="m_br" />we also supply <br class="w_br" />
-													a full range of undercarriage parts, <br class="m_br" />including:
+													핵심 제품인 트랙 링크 조립품(TRACK LINK ASSY) 외에도 다음과 같은 하부주행 부품 전반을 공급하고 있습니다:
 												</span>
 											</div>
 
@@ -50,32 +46,32 @@
 													<ul>
 														<li>
 															<span>
-																Track Group
+																트랙 그룹
 															</span>
 														</li>
 														<li>
 															<span>
-																Sprockets
+																스프로킷
 															</span>
 														</li>
 														<li>
 															<span>
-																Track Shoes
+																트랙 슈
 															</span>
 														</li>
 														<li>
 															<span>
-																Idlers
+																아이들러
 															</span>
 														</li>
 														<li>
 															<span>
-																Rollers
+																롤러
 															</span>
 														</li>
 														<li>
 															<span>
-																Repair Kits
+																수리 키트 등
 															</span>
 														</li>
 													</ul>
@@ -83,30 +79,29 @@
 
 												<div class="text02_con">
 													<span>
-														* Individual Components Available
+														개별 부품도 구매 가능합니다
 													</span>
 												</div>
 											</div>
 
 											<div class="text03_con">
 												<span>
-													We offer both complete assemblies and individual <br class="m_br" />parts to <br class="w_br" />
-													support efficient maintenance and repair.
+													완제품 조립품과 개별 부품 모두 제공하여 효율적인 유지보수와 수리를 지원합니다.
 												</span>
 											</div>
 										</div>
 									</div>
 
 									<div class="img_con">
-										<img src="/img/onp/onp_sub01_info01_img_con_img.png" alt="컨텐츠 이미지" class="fx w_img" />
-										<img src="/img/onp/m_onp_sub01_info01_img_con_img.png" alt="컨텐츠 이미지" class="fx m_img" />
+										<img src="/kr/img/onp/onp_sub01_info01_img_con_img.png" alt="컨텐츠 이미지" class="fx w_img" />
+										<img src="/kr/img/onp/m_onp_sub01_info01_img_con_img.png" alt="컨텐츠 이미지" class="fx m_img" />
 									</div>
 								</div>
 							</div>
 
 							<div class="bg">
-								<img src="/img/onp/onp_sub01_info01_con_bg_img.png" alt="컨텐츠 이미지" class="fx w_img" />
-								<img src="/img/onp/m_onp_sub01_info01_con_bg_img.png" alt="모바일 컨텐츠 이미지" class="fx m_img" />
+								<img src="/kr/img/onp/onp_sub01_info01_con_bg_img.png" alt="컨텐츠 이미지" class="fx w_img" />
+								<img src="/kr/img/onp/m_onp_sub01_info01_con_bg_img.png" alt="모바일 컨텐츠 이미지" class="fx m_img" />
 							</div>
 						</div>
 
@@ -115,44 +110,75 @@
 								<div class="title_con">
 									<div class="text01_con">
 										<span>
-											PHOTOS OF <br class="m_br" />OTHER COMPONENTS
+											기타 부품 사진
 										</span>
 									</div>
 
 									<div class="text02_con">
 										<span>
-											Track Group, Track Shoes, Rollers,Sprockets,Idlers
+											트랙 그룹, 트랙 슈, 롤러, 스프로킷, 아이들러
 										</span>
 									</div>
 								</div>
 								
 								<div class="contents_con">
-                                                                        <div class="list_con">
-                                                                        <div class="list_con">
-                                                                        <ul>
-                                                                        <?php
-                                                                        $onpImages = $db->query("SELECT * FROM df_site_onp_images ORDER BY prior DESC");
-                                                                        foreach ($onpImages as $i => $img) { ?>
-                                                                        <li>
-                                                                        <a href="javascript:onp_sub01_info02_popup(<?php echo $i; ?>);">
-                                                                        <div class="img_con" style="background-image:url('/userfiles/images/<?php echo $img['upfile_pc']; ?>');">
-                                                                        <img src="/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-                                                                        </div>
-                                                                        </a>
-                                                                        </li>
-                                                                        <?php } ?>
-                                                                        </ul>
-                                                                        </div>
+									<div class="list_con">
+										<div class="list_con">
+											<ul>
+												<li>
+													<a href="javascript:onp_sub01_info02_popup(0);">
+														<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img01.png');">
+															<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="javascript:onp_sub01_info02_popup(0);">
+														<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img02.png');">
+															<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="javascript:onp_sub01_info02_popup(0);">
+														<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img03.png');">
+															<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="javascript:onp_sub01_info02_popup(0);">
+														<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img04.png');">
+															<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="javascript:onp_sub01_info02_popup(0);">
+														<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img05.png');">
+															<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="javascript:onp_sub01_info02_popup(0);">
+														<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img06.png');">
+															<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+														</div>
+													</a>
+												</li>
+											</ul>
+										</div>
 
 										<div class="number_list_con">
 											<div class="contents_con">
 												<div class="btn_con">
 													<a href="#">
-														<img src="/img/sub/number_list_prev_btn2.svg" alt="번호목록 이전2 버튼" class="fx" />
+														<img src="/kr/img/sub/number_list_prev_btn2.svg" alt="번호목록 이전2 버튼" class="fx" />
 													</a>
 
 													<a href="#">
-														<img src="/img/sub/number_list_prev_btn.svg" alt="번호목록 이전 버튼" class="fx" />
+														<img src="/kr/img/sub/number_list_prev_btn.svg" alt="번호목록 이전 버튼" class="fx" />
 													</a>
 												</div>
 											
@@ -170,11 +196,11 @@
 											
 												<div class="btn_con">
 													<a href="#">
-														<img src="/img/sub/number_list_next_btn.svg" alt="번호목록 다음 버튼" class="fx" />
+														<img src="/kr/img/sub/number_list_next_btn.svg" alt="번호목록 다음 버튼" class="fx" />
 													</a>
 
 													<a href="#">
-														<img src="/img/sub/number_list_next_btn2.svg" alt="번호목록 다음2 버튼" class="fx" />
+														<img src="/kr/img/sub/number_list_next_btn2.svg" alt="번호목록 다음2 버튼" class="fx" />
 													</a>
 												</div>
 											</div>
@@ -190,45 +216,96 @@
 														Close
 													</span>
 
-													<img src="/img/sub/popup_close_btn_icon.svg" alt="아이콘" class="fx" />
+													<img src="/kr/img/sub/popup_close_btn_icon.svg" alt="아이콘" class="fx" />
 												</a>
 											</div>
 
 											<div class="slide_con">
-                                                                        <div class="swiper onp_sub01_info02_popup_slide">
-                                                                        <div class="swiper-wrapper">
-                                                                        <?php foreach ($onpImages as $img) { ?>
-                                                                        <div class="swiper-slide onp_sub01_info02_popup_slide_div">
-                                                                        <div class="img_con" style="background-image:url('/userfiles/images/<?php echo $img['upfile_pc']; ?>');">
-                                                                        <img src="/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-                                                                        </div>
-                                                                        </div>
-                                                                        <?php } ?>
-                                                                        </div>
-                                                                        </div>
+												<div class="swiper onp_sub01_info02_popup_slide">
+													<div class="swiper-wrapper">
+														<div class="swiper-slide onp_sub01_info02_popup_slide_div">
+															<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img01.png');">
+																<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+															</div>
+														</div>
+														<div class="swiper-slide onp_sub01_info02_popup_slide_div">
+															<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img02.png');">
+																<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+															</div>
+														</div>
+														<div class="swiper-slide onp_sub01_info02_popup_slide_div">
+															<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img03.png');">
+																<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+															</div>
+														</div>
+														<div class="swiper-slide onp_sub01_info02_popup_slide_div">
+															<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img04.png');">
+																<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+															</div>
+														</div>
+														<div class="swiper-slide onp_sub01_info02_popup_slide_div">
+															<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img05.png');">
+																<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+															</div>
+														</div>
+														<div class="swiper-slide onp_sub01_info02_popup_slide_div">
+															<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img06.png');">
+																<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+															</div>
+														</div>
+													</div>
+												</div>
 
 												<div class="swiper-button-prev slide_btn prev onp_sub01_info02_popup_slide_prev_btn">
-													<img src="/img/onp/onp_sub01_info02_popup_slide_prev_btn.svg" alt="슬라이드 이전 버튼" class="fx" />
+													<img src="/kr/img/onp/onp_sub01_info02_popup_slide_prev_btn.svg" alt="슬라이드 이전 버튼" class="fx" />
 												</div>
 
 												<div class="swiper-button-next slide_btn next onp_sub01_info02_popup_slide_next_btn">
-													<img src="/img/onp/onp_sub01_info02_popup_slide_next_btn.svg" alt="슬라이드 다음 버튼" class="fx" />
+													<img src="/kr/img/onp/onp_sub01_info02_popup_slide_next_btn.svg" alt="슬라이드 다음 버튼" class="fx" />
 												</div>
 											</div>
 
 											<div class="thumbnail_slide_con">
-                                                                        <div class="swiper onp_sub01_info02_popup_thumbnail_slide">
-                                                                        <div class="swiper-wrapper">
-                                                                        <?php foreach ($onpImages as $img) { ?>
-                                                                        <div class="swiper-slide onp_sub01_info02_popup_thumbnail_slide_div">
-                                                                        <div class="img_con" style="background-image:url('/userfiles/images/<?php echo $img['upfile_pc']; ?>');">
-                                                                        <img src="/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-                                                                        <div class="over_con"></div>
-                                                                        </div>
-                                                                        </div>
-                                                                        <?php } ?>
-                                                                        </div>
-                                                                        </div>
+												<div class="swiper onp_sub01_info02_popup_thumbnail_slide">
+													<div class="swiper-wrapper">
+														<div class="swiper-slide onp_sub01_info02_popup_thumbnail_slide_div">
+															<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img01.png');">
+																<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+																<div class="over_con"></div>
+															</div>
+														</div>
+														<div class="swiper-slide onp_sub01_info02_popup_thumbnail_slide_div">
+															<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img02.png');">
+																<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+																<div class="over_con"></div>
+															</div>
+														</div>
+														<div class="swiper-slide onp_sub01_info02_popup_thumbnail_slide_div">
+															<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img03.png');">
+																<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+																<div class="over_con"></div>
+															</div>
+														</div>
+														<div class="swiper-slide onp_sub01_info02_popup_thumbnail_slide_div">
+															<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img04.png');">
+																<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+																<div class="over_con"></div>
+															</div>
+														</div>
+														<div class="swiper-slide onp_sub01_info02_popup_thumbnail_slide_div">
+															<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img05.png');">
+																<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+																<div class="over_con"></div>
+															</div>
+														</div>
+														<div class="swiper-slide onp_sub01_info02_popup_thumbnail_slide_div">
+															<div class="img_con" style="background-image:url('/kr/img/onp/onp_sub01_info02_list_img_con_img06.png');">
+																<img src="/kr/img/onp/onp_sub01_info02_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
+																<div class="over_con"></div>
+															</div>
+														</div>
+													</div>
+												</div>
 											</div>
 
 											<div class="text_con">
@@ -525,5 +602,5 @@
 	</script>
 
 <?php
-	include $_SERVER['DOCUMENT_ROOT'].'/include/footer.html'; 
+	include $_SERVER['DOCUMENT_ROOT'].'/kr/include/footer.html'; 
 ?>	
