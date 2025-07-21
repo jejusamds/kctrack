@@ -154,7 +154,10 @@
                                                                         <div class="list_con">
                                                                         <ul>
                                                                         <?php
-                                                                        $aboutusImages = $db->query("SELECT * FROM df_site_aboutus_images ORDER BY prior DESC");
+                                                                        $aboutusImagesAll = $db->query("SELECT * FROM df_site_aboutus_images ORDER BY prior DESC");
+                                                                        $totalImages      = count($aboutusImagesAll);
+                                                                        $totalPages       = ceil($totalImages / 4);
+                                                                        $aboutusImages    = array_slice($aboutusImagesAll, 0, 4);
                                                                         foreach ($aboutusImages as $i => $img) { ?>
                                                                         <li>
                                                                         <a href="javascript:aboutus_sub01_info03_popup(<?php echo $i; ?>);">
@@ -167,7 +170,7 @@
                                                                         </ul>
                                                                         </div>
 
-										<div class="number_list_con">
+                                                                               <div class="number_list_con" data-total-pages="<?php echo $totalPages; ?>">
 											<div class="contents_con">
 												<div class="btn_con">
 													<a href="#">
@@ -184,9 +187,9 @@
 														01
 													</a>
 
-													<a href="#" class="list_a">
-														04
-													</a>
+                                                                               <a href="#" class="list_a last_page_num">
+                                                                               <?php echo sprintf('%02d', $totalPages); ?>
+                                                                               </a>
 
 													<div class="bar"></div>
 												</div>
@@ -220,7 +223,7 @@
 											<div class="slide_con">
                                                                         <div class="swiper aboutus_sub01_info03_popup_slide">
                                                                         <div class="swiper-wrapper">
-                                                                        <?php foreach ($aboutusImages as $img) { ?>
+                                                                        <?php foreach ($aboutusImagesAll as $img) { ?>
                                                                         <div class="swiper-slide aboutus_sub01_info03_popup_slide_div">
                                                                         <div class="img_con" style="background-image:url('/userfiles/images/<?php echo $img['upfile_pc']; ?>');">
                                                                         <img src="/kr/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
@@ -242,7 +245,7 @@
 											<div class="thumbnail_slide_con">
                                                                         <div class="swiper aboutus_sub01_info03_popup_thumbnail_slide">
                                                                         <div class="swiper-wrapper">
-                                                                        <?php foreach ($aboutusImages as $img) { ?>
+                                                                        <?php foreach ($aboutusImagesAll as $img) { ?>
                                                                         <div class="swiper-slide aboutus_sub01_info03_popup_thumbnail_slide_div">
                                                                         <div class="img_con" style="background-image:url('/userfiles/images/<?php echo $img['upfile_pc']; ?>');">
                                                                         <img src="/kr/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
@@ -532,8 +535,47 @@
 			}, 500);
 
 			ScrollTrigger.refresh();
-		});
-	</script>
+                });
+        </script>
+
+        <script type="text/javascript">
+                $(function(){
+                        var currentPage = 1;
+                        var $numCon = $(".aboutus_sub01_con > .contents_con > .info03_con > .contents_con > .contents_con > .list_con > .number_list_con");
+                        var totalPages = parseInt($numCon.data("total-pages"), 10) || 1;
+
+                        function zeroPad(n){ return (n < 10 ? '0' : '') + n; }
+
+                        function loadPage(p){
+                                if(p < 1) p = 1;
+                                if(p > totalPages) p = totalPages;
+                                $.getJSON('/controller/aboutus_images.php', {page:p}, function(res){
+                                        if(res.result === 'ok'){
+                                                var html = '';
+                                                $.each(res.items, function(i,item){
+                                                        html += '<li>';
+                                                        html += '    <a href="javascript:aboutus_sub01_info03_popup(' + item.index + ');">';
+                                                        html += '        <div class="img_con" style="background-image:url(\'/userfiles/images/' + item.upfile_pc + '\');">';
+                                                        html += '            <img src="/kr/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />';
+                                                        html += '        </div>';
+                                                        html += '    </a>';
+                                                        html += '</li>';
+                                                });
+                                                $numCon.siblings('.list_con').find('ul').html(html);
+                                                currentPage = p;
+                                        }
+                                });
+                        }
+
+                        $numCon.find('.btn_con').eq(0).find('a').eq(0).on('click', function(e){e.preventDefault(); loadPage(1);});
+                        $numCon.find('.btn_con').eq(0).find('a').eq(1).on('click', function(e){e.preventDefault(); loadPage(currentPage-1);});
+                        $numCon.find('.btn_con').eq(1).find('a').eq(0).on('click', function(e){e.preventDefault(); loadPage(currentPage+1);});
+                        $numCon.find('.btn_con').eq(1).find('a').eq(1).on('click', function(e){e.preventDefault(); loadPage(totalPages);});
+
+                        $numCon.find('.list_con .list_a').eq(0).text(zeroPad(1));
+                        $numCon.find('.list_con .last_page_num').text(zeroPad(totalPages));
+                });
+        </script>
 
 	<script type="text/javascript" language="javascript">
 		// info03 팝업 열기/닫기
@@ -726,4 +768,4 @@
 
 <?php
 	include $_SERVER['DOCUMENT_ROOT'].'/kr/include/footer.html'; 
-?>	
+?>
