@@ -143,59 +143,28 @@
 								</div>
 
 								<div class="contents_con">
-									<div class="list_con">
                                                                        <div class="list_con">
-                                                                               <ul>
-                                                                               <?php
-                                                                               $aboutusImages = $db->query("SELECT * FROM df_site_aboutus_images ORDER BY prior DESC");
-                                                                               foreach ($aboutusImages as $i => $img) { ?>
-                                                                               <li>
-                                                                               <a href="javascript:aboutus_sub01_info03_popup(<?php echo $i; ?>);">
-                                                                               <div class="img_con" style="background-image:url('/userfiles/images/<?php echo $img['upfile_pc']; ?>');">
-                                                                               <img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-                                                                               </div>
+                                                                       <div class="list_con">
+                                                                               <ul class="aboutus_img_list"></ul>
+                                                                       </div>
+                                                                               <div class="number_list_con">
+                                                                               <div class="contents_con">
+                                                                               <div class="btn_con">
+                                                                               <a href="javascript:void(0);" class="aboutus_prev">
+                                                                               <img src="/img/sub/number_list_prev_btn.svg" alt="번호목록 이전 버튼" class="fx"/>
                                                                                </a>
-                                                                               </li>
-                                                                               <?php } ?>
-                                                                               </ul>
                                                                                </div>
 
-										<div class="number_list_con">
-											<div class="contents_con">
-												<div class="btn_con">
-													<a href="#">
-														<img src="/img/sub/number_list_prev_btn2.svg" alt="번호목록 이전2 버튼" class="fx" />
-													</a>
+                                                                               <div class="list_con aboutus_page_buttons"></div>
 
-													<a href="#">
-														<img src="/img/sub/number_list_prev_btn.svg" alt="번호목록 이전 버튼" class="fx" />
-													</a>
-												</div>
-											
-												<div class="list_con">
-													<a href="#" class="list_a">
-														01
-													</a>
+                                                                               <div class="btn_con">
+                                                                               <a href="javascript:void(0);" class="aboutus_next">
+                                                                               <img src="/img/sub/number_list_next_btn.svg" alt="번호목록 다음 버튼" class="fx"/>
+                                                                               </a>
+                                                                               </div>
+                                                                               </div>
+                                                                               </div>
 
-													<a href="#" class="list_a">
-														04
-													</a>
-
-													<div class="bar"></div>
-												</div>
-											
-												<div class="btn_con">
-													<a href="#">
-														<img src="/img/sub/number_list_next_btn.svg" alt="번호목록 다음 버튼" class="fx" />
-													</a>
-
-													<a href="#">
-														<img src="/img/sub/number_list_next_btn2.svg" alt="번호목록 다음2 버튼" class="fx" />
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
 
 									<div class="popup_con_bg"></div>
 									<div class="popup_con">
@@ -212,15 +181,7 @@
 
 											<div class="slide_con">
                                                                        <div class="swiper aboutus_sub01_info03_popup_slide">
-                                                                               <div class="swiper-wrapper">
-                                                                               <?php foreach ($aboutusImages as $img) { ?>
-                                                                               <div class="swiper-slide aboutus_sub01_info03_popup_slide_div">
-                                                                               <div class="img_con" style="background-image:url('/userfiles/images/<?php echo $img['upfile_pc']; ?>');">
-                                                                               <img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-                                                                               </div>
-                                                                               </div>
-                                                                               <?php } ?>
-                                                                               </div>
+                                                                               <div class="swiper-wrapper aboutus_popup_wrapper"></div>
                                                                        </div>
 
 												<div class="swiper-button-prev slide_btn prev aboutus_sub01_info03_popup_slide_prev_btn">
@@ -234,16 +195,7 @@
 
 											<div class="thumbnail_slide_con">
                                                                        <div class="swiper aboutus_sub01_info03_popup_thumbnail_slide">
-                                                                               <div class="swiper-wrapper">
-                                                                               <?php foreach ($aboutusImages as $img) { ?>
-                                                                               <div class="swiper-slide aboutus_sub01_info03_popup_thumbnail_slide_div">
-                                                                               <div class="img_con" style="background-image:url('/userfiles/images/<?php echo $img['upfile_pc']; ?>');">
-                                                                               <img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" />
-                                                                               <div class="over_con"></div>
-                                                                               </div>
-                                                                               </div>
-                                                                               <?php } ?>
-                                                                               </div>
+       <div class="swiper-wrapper aboutus_popup_thumb_wrapper"></div>
                                                                        </div>
 											</div>
 
@@ -720,6 +672,37 @@
 		});
 	</script>
 
+<script>
+$(function(){
+    function loadAboutus(page){
+        $.getJSON('/controller/aboutus_images_ajax.php',{page:page},function(res){
+            var ul = $('.aboutus_img_list').empty();
+            $.each(res.images,function(i,img){
+                ul.append('<li><a href="javascript:aboutus_sub01_info03_popup('+i+');"><div class="img_con" style="background-image:url(\'/userfiles/images/'+img.upfile_pc+'\');"><img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" /></div></a></li>');
+            });
+            var wrap = $('.aboutus_popup_wrapper').empty();
+            $.each(res.images,function(i,img){
+                wrap.append('<div class="swiper-slide aboutus_sub01_info03_popup_slide_div"><div class="img_con" style="background-image:url(\'/userfiles/images/'+img.upfile_pc+'\');"><img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" /></div></div>');
+            });
+            var thumb = $('.aboutus_popup_thumb_wrapper').empty();
+            $.each(res.images,function(i,img){
+                thumb.append('<div class="swiper-slide aboutus_sub01_info03_popup_thumbnail_slide_div"><div class="img_con" style="background-image:url(\'/userfiles/images/'+img.upfile_pc+'\');"><img src="/img/aboutus/aboutus_sub01_info03_list_img_con_blank_img.png" alt="블랭크 이미지" class="fx" /><div class="over_con"></div></div></div>');
+            });
+            if(window.aboutus_sub01_info03_popup_slide){aboutus_sub01_info03_popup_slide.destroy();}
+            if(window.aboutus_sub01_info03_popup_thumbnail_slide){aboutus_sub01_info03_popup_thumbnail_slide.destroy();}
+            aboutus_sub01_info03_popup_thumbnail_slide = new Swiper('.aboutus_sub01_info03_popup_thumbnail_slide',{slidesPerView:6,speed:1500,loop:false,observer:true,observeParents:true,allowTouchMove:false,freeMode:true,watchSlidesProgress:true});
+            aboutus_sub01_info03_popup_slide = new Swiper('.aboutus_sub01_info03_popup_slide',{slidesPerView:'auto',effect:'fade',speed:1500,loop:false,navigation:{nextEl:'.aboutus_sub01_info03_popup_slide_next_btn',prevEl:'.aboutus_sub01_info03_popup_slide_prev_btn'},pagination:{el:'.main_slide_swiper-pagination',clickable:true,renderBullet:function(index,className){return '<span class="'+className+'">'+(index+1)+'</span>';}},observer:true,observeParents:true,thumbs:{swiper:aboutus_sub01_info03_popup_thumbnail_slide}});
+            var total = Math.ceil(res.total / res.per_page);
+            var list = $('.aboutus_page_buttons').empty();
+            for(var i=1;i<=total;i++){var num=(i<10?'0'+i:i);var a=$('<a href="javascript:void(0);" class="list_a" data-page="'+i+'">'+num+'</a>');list.append(a);}            list.find('a[data-page="'+page+'"]').addClass('active');
+        });
+    }
+    loadAboutus(1);
+    $(document).on('click','.aboutus_page_buttons a',function(){loadAboutus($(this).data('page'));});
+    $('.aboutus_prev').on('click',function(){var c=parseInt($('.aboutus_page_buttons a.active').data('page'))||1;if(c>1)loadAboutus(c-1);});
+    $('.aboutus_next').on('click',function(){var c=parseInt($('.aboutus_page_buttons a.active').data('page'))||1;var t=$('.aboutus_page_buttons a').length;if(c<t)loadAboutus(c+1);});
+});
+</script>
 <?php
 	include $_SERVER['DOCUMENT_ROOT'].'/include/footer.html'; 
 ?>	
